@@ -538,8 +538,9 @@ class _AddressComponentCopyWidgetState
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                      fontSize: 12,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 18,
                                     ),
                                 hintText: 'Select State',
                                 fillColor: Colors.white,
@@ -607,8 +608,9 @@ class _AddressComponentCopyWidgetState
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                      fontSize: 12,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 18,
                                     ),
                                 hintText: 'Select City',
                                 fillColor: Colors.white,
@@ -752,9 +754,9 @@ class _AddressComponentCopyWidgetState
                         width: 1,
                       ),
                       borderRadius: BorderRadius.circular(8),
-                      hoverColor: FlutterFlowTheme.of(context).axisMarronColor,
+                      hoverColor: FlutterFlowTheme.of(context).axisRubyColor,
                       hoverBorderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).axisMarronColor,
+                        color: FlutterFlowTheme.of(context).axisRubyColor,
                         width: 1,
                       ),
                       hoverTextColor:
