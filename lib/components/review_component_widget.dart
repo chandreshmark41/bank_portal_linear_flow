@@ -884,26 +884,12 @@ class _ReviewComponentWidgetState extends State<ReviewComponentWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    context.pushNamed('loading');
+
+                    await Future.delayed(const Duration(milliseconds: 500));
                     _model.updatePage(() {
                       FFAppState().currentState = FFAppState().existingCustomer;
                     });
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('Account has been created'),
-                          content: Text(
-                              'Your customerId is 4000001. Please log in.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
                   },
                   text: 'Submit',
                   options: FFButtonOptions(

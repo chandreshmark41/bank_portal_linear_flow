@@ -83,7 +83,7 @@ class _PersonalInfoComponentWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'Personal ',
+                        'Personal',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 12,

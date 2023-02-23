@@ -56,7 +56,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: double.infinity,
