@@ -1,8 +1,14 @@
 import '../components/address_component_copy_widget.dart';
+import '../components/address_info2by2_component_widget.dart';
+import '../components/common_email_form_component_widget.dart';
+import '../components/common_first_name_form_component_widget.dart';
+import '../components/common_last_name_form_component_widget.dart';
+import '../components/common_mobile_form_component_widget.dart';
 import '../components/customer_id_log_in_component_widget.dart';
 import '../components/error_pop_up_widget.dart';
 import '../components/mobile_log_in_component_widget.dart';
 import '../components/otp_component_widget.dart';
+import '../components/personal_info2by2_component_widget.dart';
 import '../components/personal_info_component_widget.dart';
 import '../components/review_component_widget.dart';
 import '../components/select_existing_customer_component_widget.dart';
@@ -10,6 +16,7 @@ import '../components/select_phone_or_customer_id_log_in_component_widget.dart';
 import '../components/trancation_e_m_i_component_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -64,12 +71,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).axisMarronColor,
                 ),
-                alignment: AlignmentDirectional(-1, 0),
+                alignment: AlignmentDirectional(0, 0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                   child: Text(
                     'Banking Portal',
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -131,14 +138,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         updateCallback: () => setState(() {}),
                         child: TrancationEMIComponentWidget(),
                       ),
-                    if (FFAppState().currentState ==
-                        FFAppState().notExistingCustomer)
+                    if (false)
                       wrapWithModel(
                         model: _model.personalInfoComponentModel,
                         updateCallback: () => setState(() {}),
                         child: PersonalInfoComponentWidget(),
                       ),
-                    if (FFAppState().currentState == FFAppState().address)
+                    if (false)
                       wrapWithModel(
                         model: _model.addressComponentCopyModel,
                         updateCallback: () => setState(() {}),
@@ -149,32 +155,210 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         model: _model.reviewComponentModel,
                         updateCallback: () => setState(() {}),
                         child: ReviewComponentWidget(
-                          firstName: _model.personalInfoComponentModel
+                          firstName: _model.personalInfo2by2ComponentModel
                               .firstNameTextFieldController.text,
-                          lastName: _model.personalInfoComponentModel
+                          lastName: _model.personalInfo2by2ComponentModel
                               .lastNameTextFieldController.text,
-                          mobile: _model.personalInfoComponentModel
+                          mobile: _model.personalInfo2by2ComponentModel
                               .phoneTextFieldController.text,
-                          email: _model.personalInfoComponentModel
+                          email: _model.personalInfo2by2ComponentModel
                               .emailTextFieldController.text,
-                          adharNumber: _model.personalInfoComponentModel
-                              .adharTextFieldController.text,
-                          panNumber: _model.personalInfoComponentModel
-                              .panCardTextFieldController.text,
-                          houseNumber: _model.addressComponentCopyModel
-                              .houseNoTextFieldController.text,
-                          street: _model.addressComponentCopyModel
-                              .streetTextFieldController.text,
-                          landmark: _model.addressComponentCopyModel
-                              .landMarkTextFieldController.text,
                           state: _model
-                              .addressComponentCopyModel.stateDropDownValue,
+                              .addressInfo2by2ComponentModel.stateDropDownValue,
                           city: _model
-                              .addressComponentCopyModel.cityDropDownValue,
-                          pincode: _model.addressComponentCopyModel
-                              .pinCodeTextFieldController.text,
+                              .addressInfo2by2ComponentModel.cityDropDownValue,
+                          pincode: _model.addressInfo2by2ComponentModel
+                              .pincodeTextFieldController.text,
+                          houseAndStreet: _model.addressInfo2by2ComponentModel
+                              .houseStreetTextFieldController.text,
                         ),
                       ),
+                    if (false)
+                      Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0, 10, 0, 30),
+                                child: Text(
+                                  'Personal Details',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .axisMarronColor,
+                                        fontSize: 22,
+                                      ),
+                                ),
+                              ),
+                              Wrap(
+                                spacing: 50,
+                                runSpacing: 0,
+                                alignment: WrapAlignment.start,
+                                crossAxisAlignment: WrapCrossAlignment.start,
+                                direction: Axis.horizontal,
+                                runAlignment: WrapAlignment.start,
+                                verticalDirection: VerticalDirection.down,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model
+                                        .commonFirstNameFormComponentModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: CommonFirstNameFormComponentWidget(),
+                                  ),
+                                  wrapWithModel(
+                                    model:
+                                        _model.commonLastNameFormComponentModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: CommonLastNameFormComponentWidget(),
+                                  ),
+                                ],
+                              ),
+                              Wrap(
+                                spacing: 50,
+                                runSpacing: 0,
+                                alignment: WrapAlignment.start,
+                                crossAxisAlignment: WrapCrossAlignment.start,
+                                direction: Axis.horizontal,
+                                runAlignment: WrapAlignment.start,
+                                verticalDirection: VerticalDirection.down,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model.commonEmailFormComponentModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: CommonEmailFormComponentWidget(),
+                                  ),
+                                  wrapWithModel(
+                                    model:
+                                        _model.commonMobileFormComponentModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: CommonMobileFormComponentWidget(),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 5, 0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          setState(() {
+                                            FFAppState().currentState =
+                                                'currentState';
+                                          });
+                                        },
+                                        text: 'Back',
+                                        options: FFButtonOptions(
+                                          width: 130,
+                                          height: 40,
+                                          color: FlutterFlowTheme.of(context)
+                                              .lineColor,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .axisMarronColor,
+                                              ),
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          hoverColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .axisRubyColor,
+                                          hoverBorderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .axisRubyColor,
+                                            width: 1,
+                                          ),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBtnText,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 0, 0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          setState(() {
+                                            FFAppState().currentState =
+                                                FFAppState().address;
+                                          });
+                                        },
+                                        text: 'Next',
+                                        options: FFButtonOptions(
+                                          width: 130,
+                                          height: 40,
+                                          color: FlutterFlowTheme.of(context)
+                                              .lineColor,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .axisMarronColor,
+                                              ),
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          hoverColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .axisRubyColor,
+                                          hoverBorderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .axisRubyColor,
+                                            width: 1,
+                                          ),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBtnText,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    wrapWithModel(
+                      model: _model.personalInfo2by2ComponentModel,
+                      updateCallback: () => setState(() {}),
+                      child: PersonalInfo2by2ComponentWidget(),
+                    ),
+                    wrapWithModel(
+                      model: _model.addressInfo2by2ComponentModel,
+                      updateCallback: () => setState(() {}),
+                      child: AddressInfo2by2ComponentWidget(),
+                    ),
                   ],
                 ),
               ),
