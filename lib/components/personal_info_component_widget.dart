@@ -181,7 +181,7 @@ class _PersonalInfoComponentWidgetState
           ),
           Form(
             key: _model.formKey,
-            autovalidateMode: AutovalidateMode.disabled,
+            autovalidateMode: AutovalidateMode.always,
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
               child: Wrap(
