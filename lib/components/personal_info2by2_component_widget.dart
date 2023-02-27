@@ -20,6 +20,13 @@ class PersonalInfo2by2ComponentWidget extends StatefulWidget {
 class _PersonalInfo2by2ComponentWidgetState
     extends State<PersonalInfo2by2ComponentWidget> {
   late PersonalInfo2by2ComponentModel _model;
+  bool _autoValidate=false;
+  bool _validateFieldOne=false;
+
+  late AutovalidateMode firstNameAutoValidateMode;
+  late AutovalidateMode lastNameAutoValidateMode;
+  late AutovalidateMode emailAutoValidateMode;
+  late AutovalidateMode phoneAutoValidateMode;
 
   @override
   void setState(VoidCallback callback) {
@@ -36,7 +43,13 @@ class _PersonalInfo2by2ComponentWidgetState
     _model.lastNameTextFieldController ??= TextEditingController();
     _model.emailTextFieldController ??= TextEditingController();
     _model.phoneTextFieldController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+
+    firstNameAutoValidateMode = AutovalidateMode.onUserInteraction;
+    lastNameAutoValidateMode = AutovalidateMode.disabled;
+    emailAutoValidateMode = AutovalidateMode.disabled;
+    phoneAutoValidateMode = AutovalidateMode.disabled;
+
+     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -58,7 +71,7 @@ class _PersonalInfo2by2ComponentWidgetState
         decoration: BoxDecoration(),
         child: Form(
           key: _model.formKey,
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: AutovalidateMode.disabled,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -105,9 +118,15 @@ class _PersonalInfo2by2ComponentWidgetState
                         ),
                         TextFormField(
                           controller: _model.firstNameTextFieldController,
+                          autovalidateMode: firstNameAutoValidateMode,
                           autofocus: true,
                           textCapitalization: TextCapitalization.words,
                           obscureText: false,
+                          // onTap: () {
+                          //   setState(() {
+                          //     firstNameAutoValidateMode = AutovalidateMode.always;
+                          //   });
+                          // },
                           decoration: InputDecoration(
                             hintText: 'eg: James is first name  in James Drew',
                             hintStyle: GoogleFonts.getFont(
@@ -191,9 +210,15 @@ class _PersonalInfo2by2ComponentWidgetState
                         ),
                         TextFormField(
                           controller: _model.lastNameTextFieldController,
+                          autovalidateMode: lastNameAutoValidateMode,
                           autofocus: true,
                           textCapitalization: TextCapitalization.words,
                           obscureText: false,
+                          onTap: () {
+                            setState(() {
+                              lastNameAutoValidateMode = AutovalidateMode.onUserInteraction;
+                            });
+                          },
                           decoration: InputDecoration(
                             hintText: 'eg: Drew is last name  in James Drew',
                             hintStyle: GoogleFonts.getFont(
@@ -288,8 +313,14 @@ class _PersonalInfo2by2ComponentWidgetState
                         ),
                         TextFormField(
                           controller: _model.emailTextFieldController,
+                          autovalidateMode: emailAutoValidateMode,
                           autofocus: true,
                           obscureText: false,
+                          onTap: () {
+                            setState(() {
+                              emailAutoValidateMode = AutovalidateMode.onUserInteraction;
+                            });
+                          },
                           decoration: InputDecoration(
                             hintText: 'eg: abc@xyz.com',
                             hintStyle: GoogleFonts.getFont(
@@ -372,8 +403,14 @@ class _PersonalInfo2by2ComponentWidgetState
                             Expanded(
                               child: TextFormField(
                                 controller: _model.phoneTextFieldController,
+                                autovalidateMode: phoneAutoValidateMode,
                                 autofocus: true,
                                 obscureText: false,
+                                onTap: () {
+                                  setState(() {
+                                    phoneAutoValidateMode = AutovalidateMode.onUserInteraction;
+                                  });
+                                },
                                 decoration: InputDecoration(
                                   hintText: '  enter 10 digit mobile number',
                                   hintStyle: GoogleFonts.getFont(
