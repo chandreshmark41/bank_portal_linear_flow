@@ -27,6 +27,10 @@ class _PersonalInfo2by2ComponentWidgetState
   late AutovalidateMode lastNameAutoValidateMode;
   late AutovalidateMode emailAutoValidateMode;
   late AutovalidateMode phoneAutoValidateMode;
+  late Color firstNameFocusColor;
+  late Color lastNameFocusColor;
+  late Color emailFocusColor;
+  late Color phoneFocusColor;
 
   @override
   void setState(VoidCallback callback) {
@@ -48,6 +52,10 @@ class _PersonalInfo2by2ComponentWidgetState
     lastNameAutoValidateMode = AutovalidateMode.disabled;
     emailAutoValidateMode = AutovalidateMode.disabled;
     phoneAutoValidateMode = AutovalidateMode.disabled;
+    firstNameFocusColor = Colors.yellow[50]!;
+    lastNameFocusColor = Colors.transparent;
+    emailFocusColor = Colors.transparent;
+    phoneFocusColor = Colors.transparent;
 
      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -71,7 +79,7 @@ class _PersonalInfo2by2ComponentWidgetState
         decoration: BoxDecoration(),
         child: Form(
           key: _model.formKey,
-          autovalidateMode: AutovalidateMode.disabled,
+          //autovalidateMode: AutovalidateMode.disabled,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -122,11 +130,17 @@ class _PersonalInfo2by2ComponentWidgetState
                           autofocus: true,
                           textCapitalization: TextCapitalization.words,
                           obscureText: false,
-                          // onTap: () {
-                          //   setState(() {
-                          //     firstNameAutoValidateMode = AutovalidateMode.always;
-                          //   });
-                          // },
+
+                          onTap: () {
+                            setState(() {
+                              if (firstNameFocusColor == Colors.transparent) {
+                                firstNameFocusColor = Colors.yellow[50]!;
+                                lastNameFocusColor = Colors.transparent;
+                                emailFocusColor = Colors.transparent;
+                                phoneFocusColor = Colors.transparent;
+                              }
+                            });
+                          },
                           decoration: InputDecoration(
                             hintText: 'eg: James is first name  in James Drew',
                             hintStyle: GoogleFonts.getFont(
@@ -164,6 +178,7 @@ class _PersonalInfo2by2ComponentWidgetState
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
+                            fillColor: firstNameFocusColor,
                             filled: true,
                           ),
                           style: FlutterFlowTheme.of(context)
@@ -217,6 +232,11 @@ class _PersonalInfo2by2ComponentWidgetState
                           onTap: () {
                             setState(() {
                               lastNameAutoValidateMode = AutovalidateMode.onUserInteraction;
+
+                              firstNameFocusColor = Colors.transparent;
+                              lastNameFocusColor = Colors.yellow[50]!;
+                              emailFocusColor = Colors.transparent;
+                              phoneFocusColor = Colors.transparent;
                             });
                           },
                           decoration: InputDecoration(
@@ -256,7 +276,9 @@ class _PersonalInfo2by2ComponentWidgetState
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
+
                             filled: true,
+                            fillColor: lastNameFocusColor,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
@@ -319,6 +341,12 @@ class _PersonalInfo2by2ComponentWidgetState
                           onTap: () {
                             setState(() {
                               emailAutoValidateMode = AutovalidateMode.onUserInteraction;
+
+                              firstNameFocusColor = Colors.transparent;
+                              lastNameFocusColor = Colors.transparent;
+                              emailFocusColor = Colors.yellow[50]!;
+                              phoneFocusColor = Colors.transparent;
+
                             });
                           },
                           decoration: InputDecoration(
@@ -358,6 +386,7 @@ class _PersonalInfo2by2ComponentWidgetState
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
+                            fillColor: emailFocusColor,
                             filled: true,
                           ),
                           style: FlutterFlowTheme.of(context)
@@ -409,6 +438,11 @@ class _PersonalInfo2by2ComponentWidgetState
                                 onTap: () {
                                   setState(() {
                                     phoneAutoValidateMode = AutovalidateMode.onUserInteraction;
+
+                                    firstNameFocusColor = Colors.transparent;
+                                    lastNameFocusColor = Colors.transparent;
+                                    emailFocusColor = Colors.transparent;
+                                    phoneFocusColor = Colors.yellow[50]!;
                                   });
                                 },
                                 decoration: InputDecoration(
@@ -448,6 +482,7 @@ class _PersonalInfo2by2ComponentWidgetState
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
+                                  fillColor: phoneFocusColor,
                                   filled: true,
                                 ),
                                 style: FlutterFlowTheme.of(context)
